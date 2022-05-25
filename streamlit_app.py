@@ -3,6 +3,7 @@ import streamlit
 import pandas
 import requests
 import snowflake.connector
+from urllib.error import URLError #For control of flow
 
 #-----------MENU-----------------
 streamlit.title('My Parents New Healthy Dinner')
@@ -42,6 +43,7 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
 
 #------------Query metadata account from Snowflake-----
+streamlit.stop() #Stop anything from running, just while we troubleshoot
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
