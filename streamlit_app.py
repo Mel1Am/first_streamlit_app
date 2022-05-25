@@ -44,8 +44,8 @@ try:
     fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
     #output it the screen as a table
     streamlit.dataframe(fruityvice_normalized)
-  except URLError as e:
-    streamlit.error()
+except URLError as e:
+  streamlit.error()
 
 #------------Query metadata account from Snowflake-----
 streamlit.stop() #Stop anything from running, just while we troubleshoot
